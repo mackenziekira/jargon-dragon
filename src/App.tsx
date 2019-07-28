@@ -3,31 +3,45 @@ import dragon from './dragon.png';
 import './App.css';
 
 const App: React.FC = () => {
+  const [words, updateWords] = useState([makeWordWithPos()])
+  if (words.length < 40) {
+    setTimeout(() => updateWords([...words, makeWordWithPos()]), 300)
+  } 
   return (
     <div className="App">
       <header className="App-header">
         <p className="App-title"><strong>The Jargon Dragon</strong></p>
-        <img src={dragon} alt='dragon' width={300} height={300}/>
-        {jargonWords.map((word: string) => <FallingWord word={word} />)}
+        <img src={dragon} alt='dragon' width={300} height={300} className='dragon'/>
+        {words.map((wordWithPos: WordWithPosType) => <FallingWord {...wordWithPos} />)}
       </header>
     </div>
   );
 }
 
-const FallingWord: React.FC<FallingWordProps> = (props: FallingWordProps) => {
+const makeWordWithPos = (): WordWithPosType => {
+  const randomYPos = Math.floor(Math.random()*window.outerHeight)
+  const randomXPos = Math.floor(Math.random()*window.outerWidth)
+  const randomColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+  const word = jargonWords[Math.floor(Math.random()*jargonWords.length)]
+    return {word: word, xPos: randomXPos, yPos: randomYPos, color: randomColor}
+}
+
+const FallingWord: React.FC<WordWithPosType> = (props: WordWithPosType) => {
   const absolute: 'absolute' = 'absolute'
-  const randomYPos = Math.floor(Math.random()*window.innerHeight)
-  const randomXPos = Math.floor(Math.random()*window.innerWidth)
   const divStyle = {
     position: absolute,
-    top: randomYPos,
-    left: randomXPos,
+    top: props.yPos,
+    left: props.xPos,
+    color: props.color,
   };
   return <div style={divStyle} className='falling-word'>{props.word}</div>
 }
 
-interface FallingWordProps {
+interface WordWithPosType {
   word: string,
+  xPos: number,
+  yPos: number,
+  color: string
 }
 
 const jargonWords = ['adient',

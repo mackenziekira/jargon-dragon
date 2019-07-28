@@ -1,7 +1,7 @@
 .App-header {
   height: 100vh;
   padding: 100px 0;
-  background-color: #d51cdb;
+  background-color: #ed0bf5;
   text-align: center;
 }
 
@@ -12,8 +12,24 @@
   font-family: 'Comic Sans MS', cursive, sans-serif
 }
 
+.dragon {
+  animation: zoom 4s 3;
+}
+
+@keyframes zoom {
+  0% {
+    transform: scale(1,1);
+}
+50% {
+    transform: scale(4,4) ;
+}
+100% {
+    transform: scale(1,1);
+}
+}
+
 .falling-word {
-  animation: slide 5s linear infinite
+  animation: slide 5s ease-in infinite
 }
 
 @keyframes slide {
@@ -21,6 +37,6 @@
     margin-top: -100%
   }
   to {
-    margin-top: 100%
+    margin-top: 0%
   }
 }
