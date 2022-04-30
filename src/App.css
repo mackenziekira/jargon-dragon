@@ -1,6 +1,6 @@
 .App-header {
   height: 100vh;
-  padding: 100px 0;
+  padding: 100px 0 200px 0;
   background-color: #ed0bf5;
   text-align: center;
 }
@@ -9,7 +9,7 @@
   color: #6be931;
   font-size: 40px;
   font-display: bold;
-  font-family: 'Comic Sans MS', cursive, sans-serif
+  font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
 .dragon {
@@ -18,25 +18,100 @@
 
 @keyframes zoom {
   0% {
-    transform: scale(1,1);
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(4, 4);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
 }
-50% {
-    transform: scale(4,4) ;
+
+.explanation {
+  margin: 0 auto;
+  max-width: 300px;
+  text-align: left;
+  padding-bottom: 10px;
 }
-100% {
-    transform: scale(1,1);
+
+.fade-in {
+  animation: fadeIn 14s linear infinite;
+  -webkit-animation: fadeIn linear 14s;
+  -moz-animation: fadeIn linear 14s;
+  -o-animation: fadeIn linear 14s;
+  -ms-animation: fadeIn linear 14s;
 }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .falling-word {
-  animation: slide 5s ease-in infinite
+  animation: slide 5s ease-in infinite;
 }
 
 @keyframes slide {
   from {
-    margin-top: -100%
+    margin-top: -100%;
   }
   to {
-    margin-top: 0%
+    margin-top: 0%;
   }
 }
